@@ -1,0 +1,136 @@
+﻿@model IEnumerable<BookMyTickets.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <style>
+        #navBookingOfUser {
+            background-color:aliceblue;
+        }
+    </style>
+
+    <h2>Booked Tickets</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalTickets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seat)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheaterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScreenNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@{ int counter = 1;
+
+                    @foreach (var item in Model)
+                    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalTickets)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seat)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovieName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TheaterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScreenNo)
+                </td>
+                <td>
+
+
+                    <img src="@ViewBag.codes[counter]" style="width:200px;height:200px;" />
+
+                    int counter = counter + 1;
+                </td>
+            </tr>
+        }  }*@
+
+        @{ int i = 0;
+            @foreach (var item in Model)
+            {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalTickets)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seat)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MovieName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TheaterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScreenNo)
+        </td>
+        <td>
+
+
+            <img src="@ViewBag.codes[@i]" style="width:200px;height:200px;" />
+
+           
+        </td>
+    </tr>
+                i = i + 1;
+            }  }
+
+
+    </tbody>
+</table>

@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "SeatSelectionBookingPhase3";
+}
+
+<style>
+    .page-wrapper,
+    .content-wrapper {
+        background: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content-wrapper {
+        margin-top: 1vh;
+        margin-bottom: 0vh;
+        margin-left: 4vw;
+        margin-right: 4vw;
+        padding: 2vh 2vw;
+    }
+</style>
+
+
+<div class="page-wrapper">
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                    <div class="card" style="width: 18rem;">
+                        <img src="@ViewBag.Url" class="card-img-top">
+                    </div>
+                </div>
+                <div class="column">
+                    <h2> Movie Name:- @ViewBag.MovieName</h2>
+                    <b>Movie Language:-</b>
+                    <p>@ViewBag.Language</p>
+                    <b>Movie Genre:-</b>
+                    <p>@ViewBag.Genre</p>
+                    <b>Movie Director:-</b>
+                    <p>@ViewBag.Director</p>
+                    <b>Movie duration:-</b>
+                    <p>@ViewBag.Duretion min.</p>
+                    <b>Movie releaseDate:-</b>
+                    <p>@ViewBag.ReleaseDate</p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="container" style="margin:2rem;">
+           
+                    <div class="row">
+                        <table>
+                            <tr>
+                                <td><b>Show Id:-</b></td>
+                                <td>@ViewBag.ShowId</td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Theater Name:-</b></td>
+                                <td>@ViewBag.TheaterName</td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Screen No:-</b></td>
+                                <td>@ViewBag.ScreenNo</td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Show Starting Time:-</b></td>
+                                <td>@ViewBag.StartTime</td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Show Date:-</b></td>
+                                <td>@ViewBag.Date</td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Price per seat:-</b></td>
+                                <td>@ViewBag.Price USD.</td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Price per Goldenseat:-</b></td>
+                                <td>@ViewBag.GoldenPrice USD.</td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                
+        </div>
+        <div class="container" style="margin:2rem;">
+            @*@using (Html.BeginForm("ConfirmBookingPhase4", "Bookings", FormMethod.Post))
+            {*@
+
+        <input type="hidden" value="@ViewBag.ShowId" name="ShowId" /> @*<p>Enter Total No Of Ticket:- </p>
+                    @Html.TextBox("TotalTickets")
+                    <p>Enter Seat Numer:- </p>
+                    @Html.TextBox("Seat");*@
+
+                        <p>Choose a seat to book:</p>
+                                        <br>
+                                                        @for (int i = 1; i <= 50; i++)
+                                                        {
+                                                            bool z = false;
+                                        @if (ViewBag.Allseats != null)
+                                        {
+                                            @foreach (var s in ViewBag.Allseats)
+                                            {
+                                                if (@s == i)
+                                                {
+                                                    z = true;
+                                                }
+                                            }
+                                                                    @if (z)
+                                                                    {
+                                                                        <input type="button" style="background-color:red; width:50px;" value="@i" />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @**@
+        <form asp-action="payment" method="post" style="display:inline;">
+            <input type="hidden" name="ShowId" value="@ViewBag.ShowId" />
+            @if (i >= 0 && i <= 20)
+            {
+                <input type="hidden" name="price" value="@ViewBag.GoldenPrice" />
+                <button style="background-color:gold; width:50px;" name="seat" type="submit" value="@i">@i</button>
+            }
+            else
+            {
+        <input type="hidden" name="price" value="@ViewBag.Price" />
+                                    <button style="background-color:blue; width:50px;" name="seat" type="submit" value="@i">@i</button>}
+
+
+        </form>
+                                                                    }
+                                        }
+                                        @if (@i % 10 == 0)
+                                        {
+                                            <br />
+                                        }
+                                                        }
+
+
+                                                                        <div style="width:500px;height:20px;background-color:aqua;">Screen</div>            
+        </div>
+    </div>
+    <hr />
+    <div></div>
+    <hr />

@@ -1,0 +1,74 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<BookMyTickets.Data.StripeSettings> Stripe
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <form asp-action="ConfirmBookingPhase4" method="POST" id="payment-form">
+        <span class="payment-errors"></span>
+
+        <div class="row">
+            <label>
+                <span>Card Number</span>
+                <input type="text" data-stripe="number" value="4242424242424242">
+            </label>
+        </div>
+
+        <div class="row">
+            <label>
+                <span>CVC</span>
+                <input type="text" data-stripe="cvc" value="123">
+                <input name="seat" type="hidden" value="@ViewBag.Seat" />
+            </label>
+        </div>
+
+        <div class="row">
+            <label>
+                <span>Expiration (MM/YYYY)</span>
+                <input type="text" data-stripe="exp-month" value="12">
+            </label>
+            <input type="text" data-stripe="exp-year" value="2020">
+        </div>
+
+        <button type="submit">Buy Now</button>
+    </form>*@
+<form asp-action="ConfirmBookingPhase4" method="post">
+    <noscript>You must <a href="http://www.enable-javascript.com" target="_blank">enable JavaScript</a> in your web browser in order to pay via Stripe.</noscript>
+    <div class="text-center">
+        <label>order is ready pay to complete</label>
+        <input name="seat" type="hidden" value="@ViewBag.Seat" readonly="readonly" />
+        <input name="ShowId" type="hidden" value="@ViewBag.ShowId" readonly="readonly" />
+        <input type="submit"
+               value="Pay with Card"
+               data-key="@Stripe.Value.PublishableKey"
+               data-amount="@ViewBag.price"
+               data-currency="US"
+               data-locale="auto"
+               data-name="Example Company Inc"
+               data-description="pay" />
+    </div>
+    
+    <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(':submit').on('click', function (event) {
+                event.preventDefault();
+
+                var $button = $(this),
+                    $form = $button.parents('form');
+
+                var opts = $.extend({}, $button.data(), {
+                    token: function (result) {
+                        $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+                    }
+                });
+
+                StripeCheckout.open(opts);
+            });
+        });
+    </script>
+</form>
