@@ -23,6 +23,6 @@
 <a href="https://postimg.cc/34V7BfH7" target="_blank"><img src="https://i.postimg.cc/fyTLM123/Screenshot-11.png" alt="Screenshot-11"/></a><br/><br/>
 <h3>Now user must enter a credit card to pay and book the seat</h3>
 <a href="https://postimg.cc/jnfTk6sf" target="_blank"><img src="https://i.postimg.cc/vTqmTXk0/Screenshot-12.png" alt="Screenshot-12"/></a><br/><br/>
-<h3>When payment is succesful an email is sent with the QR code that must be verified at the cinema to confirm identity</h3>
+<h3>When payment is successful an email is sent with the QR code that must be verified at the cinema to confirm identity</h3>
 <a href="https://postimg.cc/xXnQtbBk" target="_blank"><img src="https://i.postimg.cc/XYyvNf8g/Screenshot-13.png" alt="Screenshot-13"/></a><br/><br/>
 
