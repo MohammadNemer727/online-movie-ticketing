@@ -1,5 +1,5 @@
 # online-movie-ticketing
-## ScreenShots
+##  ScreenShots
   <h3>Home page user can just search for movies if not authenticated</h3>
 
 <a href="https://postimg.cc/JyQGpLT8" target="_blank"><img src="https://i.postimg.cc/BvrHQZHj/Screenshot-1.png" alt="Screenshot-1"/></a><br/><br/>
